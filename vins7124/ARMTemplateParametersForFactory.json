@@ -1,0 +1,15 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "vins7124"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"eventtrigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/170e84f0-25fe-4cd3-bc58-50383c3d3597/resourceGroups/Resgrp/providers/Microsoft.Storage/storageAccounts/vins7124"
+		}
+	}
+}
