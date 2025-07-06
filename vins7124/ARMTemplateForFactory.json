@@ -11,7 +11,7 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
 		},
-		"eventtrigger_properties_typeProperties_scope": {
+		"eventrigger_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/170e84f0-25fe-4cd3-bc58-50383c3d3597/resourceGroups/Resgrp/providers/Microsoft.Storage/storageAccounts/vins7124"
 		}
@@ -102,7 +102,8 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"container": "inputcsv"
+						"fileName": "*.csv",
+						"container": "inputforcsv"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
@@ -129,7 +130,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"container": "outputjson"
+						"container": "outputforjson"
 					}
 				},
 				"schema": {}
@@ -152,7 +153,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/eventtrigger')]",
+			"name": "[concat(parameters('factoryName'), '/eventrigger')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -169,9 +170,9 @@
 				],
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
-					"blobPathBeginsWith": "/input/blobs/",
+					"blobPathBeginsWith": "/inputforcsv/blobs/",
 					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('eventtrigger_properties_typeProperties_scope')]",
+					"scope": "[parameters('eventrigger_properties_typeProperties_scope')]",
 					"events": [
 						"Microsoft.Storage.BlobCreated"
 					]
